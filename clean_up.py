@@ -1,63 +1,27 @@
 import os
 import csv
-import pandas as pd
 
 # Set this to the dataset directory you want to clean
-DATASET_DIR = "/home/hmc/pb543/diffusers/examples/dreambooth/synthetic_dataset/Ethiopian"
-# DATASET_DIR = "/home/hmc/pb543/diffusers/examples/dreambooth/synthetic_dataset/South African"
-
-def relabel_existing_metadata(directory):
-    metadata_path = os.path.join(directory, "metadata.csv")
-
-    if not os.path.exists(metadata_path):
-        print(f"❌ metadata.csv not found in {directory}. Cannot relabel.")
-        return
-
-    # Load metadata
-    with open(metadata_path, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        fieldnames = reader.fieldnames
-        rows = list(reader)
-
-    # Relabel images and update metadata
-    new_rows = []
-    for idx, row in enumerate(rows, start=1):
-        ext = os.path.splitext(row["filename"])[1].lower() or ".jpg"
-        new_id = idx
-        new_filename = f"img{new_id:03d}{ext}"
-
-        # Rename image file
-        old_path = os.path.join(directory, row["filename"])
-        new_path = os.path.join(directory, new_filename)
-        if os.path.exists(old_path):
-            os.rename(old_path, new_path)
-
-        # Update metadata
-        row["id"] = new_id
-        row["filename"] = new_filename
-        new_rows.append(row)
-
-    # Save updated metadata
-    with open(metadata_path, "w", newline='') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(new_rows)
-
-    print(f"🧼 Cleaned synthetic dataset in '{os.path.basename(directory)}' and updated metadata.csv.")
-
+DATASET_DIR = "/home/hmc/pb543/file_browser/aged_images/Black Caribbean"
+# DATASET_DIR = "/home/hmc/pb543/diffusers/examples/dreambooth/synthetic_dataset/Black Caribbean"
 
 def cleanup_and_generate_metadata_by_subfolder(directory, ethnicity):
-    # Load gender info from AgeTransGAN metadata
-    gender_map = {}
-    seed_metadata_path = os.path.join("AgeTransGAN images", ethnicity, "metadata.csv")
-    if os.path.exists(seed_metadata_path):
-        df = pd.read_csv(seed_metadata_path)
-        gender_map = dict(zip(df["filename"], df["gender"]))
-
     for subdir in os.listdir(directory):
         full_path = os.path.join(directory, subdir)
         if os.path.isdir(full_path):
             age_group = subdir
+
+            # Try to load existing metadata to retain gender labels
+            metadata_path = os.path.join(full_path, "metadata.csv")
+            existing_gender_map = {}
+
+            if os.path.exists(metadata_path):
+                with open(metadata_path, newline='') as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for row in reader:
+                        existing_gender_map[row["filename"]] = row.get("gender", "Unknown")
+
+            # Reorder and rename image files
             image_files = sorted([
                 f for f in os.listdir(full_path)
                 if f.lower().endswith((".jpg", ".jpeg", ".png"))
@@ -72,7 +36,7 @@ def cleanup_and_generate_metadata_by_subfolder(directory, ethnicity):
                 new_path = os.path.join(full_path, new_filename)
                 os.rename(old_path, new_path)
 
-                gender = gender_map.get(old_filename, "Unknown")
+                gender = existing_gender_map.get(old_filename, "Unknown")
 
                 new_rows.append({
                     "id": idx,
@@ -82,16 +46,14 @@ def cleanup_and_generate_metadata_by_subfolder(directory, ethnicity):
                     "gender": gender
                 })
 
-            metadata_path = os.path.join(full_path, "metadata.csv")
+            # Save updated metadata
             with open(metadata_path, "w", newline='') as csvfile:
                 fieldnames = ["id", "filename", "ethnicity", "age_group", "gender"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
                 writer.writerows(new_rows)
 
-            print(f"✅ Processed {len(new_rows)} images in '{age_group}' and created metadata.csv.")
-
-
+            print(f"✅ Renamed and updated metadata for '{age_group}' with {len(new_rows)} images.")
 def cleanup_and_relabel(directory):
     ethnicity = os.path.basename(os.path.dirname(directory))
     age_group = os.path.basename(directory)
@@ -134,16 +96,10 @@ def cleanup_and_relabel(directory):
         writer.writerows(new_rows)
 
     print(f"✅ [Flask] Cleaned and updated metadata in {directory}")
-
 # === MAIN ENTRY ===
 if __name__ == "__main__":
     ethnicity = os.path.basename(DATASET_DIR)
-
-    if "synthetic_dataset" in DATASET_DIR:
-        relabel_existing_metadata(DATASET_DIR)
-
-    elif "aged_images" in DATASET_DIR:
+    if "aged_images" in DATASET_DIR:
         cleanup_and_generate_metadata_by_subfolder(DATASET_DIR, ethnicity)
-
     else:
-        print("❌ Unrecognized dataset type. Make sure the path contains 'synthetic_dataset' or 'aged_images'.")
+        print("❌ Unrecognized dataset type. Make sure the path contains 'aged_images'.")

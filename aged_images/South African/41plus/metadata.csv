@@ -1,15 +1,12 @@
 id,filename,ethnicity,age_group,gender
-1,img001.png,South African,41plus,Unknown
-2,img002.png,South African,41plus,Unknown
-3,img003.png,South African,41plus,Unknown
-4,img004.png,South African,41plus,Unknown
-5,img005.png,South African,41plus,Unknown
-6,img006.png,South African,41plus,Unknown
-7,img007.png,South African,41plus,Unknown
-8,img008.png,South African,41plus,Unknown
-9,img009.png,South African,41plus,Unknown
-10,img010.png,South African,41plus,Unknown
-11,img011.png,South African,41plus,Unknown
-12,img012.png,South African,41plus,Unknown
-13,img013.png,South African,41plus,Unknown
-14,img014.png,South African,41plus,Unknown
+1,img001.png,South African,41plus,male
+2,img002.png,South African,41plus,male
+3,img003.png,South African,41plus,female
+4,img004.png,South African,41plus,female
+5,img005.png,South African,41plus,female
+6,img006.png,South African,41plus,female
+7,img007.png,South African,41plus,male
+8,img008.png,South African,41plus,male
+9,img009.png,South African,41plus,male
+10,img010.png,South African,41plus,male
+11,img011.png,South African,41plus,male
