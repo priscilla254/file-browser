@@ -1,8 +1,11 @@
 import os
 import csv
+import pandas as pd
+import random
+import csv
 
 # Set this to the dataset directory you want to clean
-DATASET_DIR = "/home/hmc/pb543/file_browser/aged_images/Black Caribbean"
+DATASET_DIR = "/home/hmc/pb543/file_browser/test"
 # DATASET_DIR = "/home/hmc/pb543/diffusers/examples/dreambooth/synthetic_dataset/Black Caribbean"
 
 def cleanup_and_generate_metadata_by_subfolder(directory, ethnicity):

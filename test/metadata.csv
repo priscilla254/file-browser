@@ -1,0 +1,76 @@
+id,filename,ethnicity,age_group,gender
+1,img001.png,South African,13-17,male
+2,img002.png,Hawaiian,21-25,female
+3,img003.png,Indigenous Australian,18-20,male
+4,img004.png,Filipino,41plus,male
+5,img005.png,Hawaiian,13-17,female
+6,img006.png,Chinese,41plus,female
+7,img007.png,Northern European,13-17,male
+8,img008.png,Arabic,41plus,female
+9,img009.png,Southern European,41plus,male
+10,img010.png,Ethiopian,26-40,female
+11,img011.png,Black Caribbean,26-40,male
+12,img012.png,Indigenous Australian,21-25,male
+13,img013.png,Filipino,21-25,female
+14,img014.png,Chinese,13-17,male
+15,img015.png,Indigenous Australian,13-17,female
+16,img016.png,Black Caribbean,13-17,female
+17,img017.png,Native American,41plus,female
+18,img018.png,Black Caribbean,21-25,female
+19,img019.png,Ethiopian,13-17,female
+20,img020.png,Black Caribbean,41plus,Unknown
+21,img021.png,East African,18-20,female
+22,img022.png,Indian,18-20,female
+23,img023.png,Native American,18-20,male
+24,img024.png,Indian,26-40,female
+25,img025.png,South African,21-25,male
+26,img026.png,Indigenous Australian,41plus,female
+27,img027.png,West African,41plus,male
+28,img028.png,Southern European,21-25,female
+29,img029.png,West African,18-20,male
+30,img030.png,Chinese,21-25,female
+31,img031.png,Ethiopian,21-25,female
+32,img032.png,Indian,21-25,male
+33,img033.png,Black Caribbean,18-20,male
+34,img034.png,Northern European,26-40,female
+35,img035.png,Brazilian,18-20,female
+36,img036.png,Brazilian,41plus,female
+37,img037.png,Indian,41plus,male
+38,img038.png,South African,41plus,male
+39,img039.png,Indigenous Australian,26-40,male
+40,img040.png,Native American,26-40,female
+41,img041.png,Hawaiian,41plus,male
+42,img042.png,East African,21-25,male
+43,img043.png,Arabic,26-40,male
+44,img044.png,Brazilian,13-17,female
+45,img045.png,Ethiopian,18-20,female
+46,img046.png,East African,13-17,female
+47,img047.png,Chinese,18-20,female
+48,img048.png,Chinese,26-40,female
+49,img049.png,Arabic,13-17,male
+50,img050.png,Native American,21-25,male
+51,img051.png,Hawaiian,18-20,female
+52,img052.png,Filipino,18-20,female
+53,img053.png,West African,26-40,male
+54,img054.png,Northern European,41plus,male
+55,img055.png,Southern European,26-40,male
+56,img056.png,East African,41plus,male
+57,img057.png,Northern European,18-20,female
+58,img058.png,Brazilian,21-25,male
+59,img059.png,Native American,13-17,male
+60,img060.png,Arabic,21-25,female
+61,img061.png,Brazilian,26-40,female
+62,img062.png,Filipino,13-17,male
+63,img063.png,West African,13-17,female
+64,img064.png,South African,18-20,male
+65,img065.png,Ethiopian,41plus,female
+66,img066.png,West African,21-25,male
+67,img067.png,Filipino,26-40,female
+68,img068.png,Southern European,18-20,female
+69,img069.png,Indian,13-17,male
+70,img070.png,Northern European,21-25,male
+71,img071.png,Hawaiian,26-40,female
+72,img072.png,Arabic,18-20,male
+73,img073.png,Southern European,13-17,female
+74,img074.png,South African,26-40,female
+75,img075.png,East African,26-40,female
